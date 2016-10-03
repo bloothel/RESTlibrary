@@ -1,19 +1,9 @@
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import glob
 from flask import Flask,g
-
 from flask_restful import Api
-app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
-api = Api(app)
-
 from routs import getBook
-
-
-api.add_resource(getBook, '/get/book')
-
 
 # print a nice greeting.
 def say_hello(username = "World"):
