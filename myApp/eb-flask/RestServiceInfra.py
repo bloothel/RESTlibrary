@@ -19,10 +19,7 @@ class RestServiceInfra(Resource):
     auth = HTTPBasicAuth()
     sqlPath=""
     project_path = ""
-    defaultLimit = 100
-    defaultOffset = 0
-#   defaultFromDate = '2016-01-01 00:00:00.000'
-#   defaultToDate = datetime.datetime.now()
+    books = {1:{"id": "1", "title": "sss", "description": "aaa", "create_date": "fff"}}
 
     def __init__(self):
         self.project_path = os.path.dirname(os.path.dirname(__file__))
@@ -57,6 +54,3 @@ class RestServiceInfra(Resource):
                     return False
             return True
         return '.' in file.filename and file.filename.rsplit('.', 1)[1] in self.ALLOWED_EXTENSIONS
-
-
-
