@@ -1,7 +1,4 @@
-import sys
-import os
-import glob
-from flask import Flask,g
+from flask import Flask
 from flask_restful import Api
 from routs import getBook
 
