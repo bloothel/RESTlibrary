@@ -15,21 +15,7 @@ from flask import g
 
 class RestServiceInfra(Resource):
 
-    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','csv','zip','gz','json'])
-    auth = HTTPBasicAuth()
-    sqlPath=""
-    project_path = ""
-    defaultLimit = 100
-    defaultOffset = 0
-#   defaultFromDate = '2016-01-01 00:00:00.000'
-#   defaultToDate = datetime.datetime.now()
-
-    def __init__(self):
-        self.project_path = os.path.dirname(os.path.dirname(__file__))
-
-    def get(self):pass
-
-    def put(self):pass
+    books = {1:{"id": "1", "title": "sss", "description": "aaa", "create_date": "fff"}}
 
     def argument_parser(self, arg, location='args'):
         parser = reqparse.RequestParser()
@@ -42,21 +28,4 @@ class RestServiceInfra(Resource):
                 if not self.allowed_file(arg):
                     abort(http_status_code=409, errors="File type of file %s not authorized" %(argument[0]))
         return parsed_args
-
-    @property
-    def fullSqlPath(self):
-        return os.path.normcase ( self.project_path + self.sqlPath)
-
-    def convertToJson(self,result):pass
-
-    def allowed_file(self,file):
-        if file.filename.rsplit('.', 1)[1] == 'zip':
-            zip_ref = zipfile.ZipFile(file)
-            for z in zip_ref.infolist():
-                if '.' in z.filename and not z.filename.rsplit('.', 1)[1] in self.ALLOWED_EXTENSIONS:
-                    return False
-            return True
-        return '.' in file.filename and file.filename.rsplit('.', 1)[1] in self.ALLOWED_EXTENSIONS
-
-
 

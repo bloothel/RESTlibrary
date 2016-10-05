@@ -29,4 +29,3 @@ class ConfigSettings:
             return self.Config.items(section_name)
         except ConfigParser.NoOptionError:
             return False
-
