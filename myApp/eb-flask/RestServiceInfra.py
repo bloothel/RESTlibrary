@@ -1,15 +1,5 @@
-import os
-import sys
 from flask_restful import reqparse,  Resource
 from flask_restful import abort
-from flask_httpauth import HTTPBasicAuth
-import datetime
-import zipfile
-
-# The application context is created and destroyed as necessary.
-# It never moves between threads and it will not be shared between requests.
-# As such it is the perfect place to store database connection information and other things
-from flask import g
 
 
 
